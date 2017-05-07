@@ -19,10 +19,17 @@ body {
   color: white;
 }
 
+img {
+  opacity: 0.98;
+}
+
 main {
+  position: relative;
   padding-top: 100px;
   width: 85%;
+  max-width: 1400px;
   margin: 0 auto;
+  height: 100%;
 }
 
 section {
@@ -49,43 +56,90 @@ section.about {
 section.image-grid {
   position: relative;
   width: 100%;
-  height: 250px;
-  background: rgba(59,40,80,0.05);
+  height: 31vw;
+  max-height: 510.58px;
   div.grid {
     width: 100%;
     height: 100%;
     border: 1px solid white;
-    transition: 0.7s ease-out;
+    transition: 0.9s ease-out;
     font-size: 0;
     // background: rgba(59,40,140,0.5);
     div {
       display: inline-block;
-      width: 20%;
+      width: 25%;
       height: 50%;
       border: 1px solid white;
       font-size: 12px;
-      &.bottom {
-        border-bottom: 2px solid white;
-      }
+      // &.top {
+      //   border-top: 2px solid white;
+      // }
+      // &.left {
+      //   border-left: 2px solid white;
+      // }
+      // &.right {
+      //   border-right: 2px solid white;
+      // }
+      // &.bottom {
+      //   border-bottom: 2px solid white;
+      // }
       &::after {
         content: '';
         position: relative;
         display: block;
         margin-left: calc(50% - 2px);
-        width:4px;
+        width:3px;
         height: 100%;
         background: white;
       }
     }
   }
-  div.click-overlay {
+  a.click-overlay, div.main-image, section.images {
     position: absolute;
     top: 0;
     left:0;
     right:0;
     bottom: 0;
     // background: red;
-    opacity: 0.4;
+  }
+  section.images {
+    transition: 0.4s ease-out;
+    // background: red;
+    width: 100%;
+    height: 100%;
+    div.main-image {
+      position: absolute;
+      width: 50%;
+      // right:50%;
+      overflow: hidden;
+      img {
+        width:100%;
+      }
+    }
+    div.top-left-image, div.top-right-image, div.bottom-left-image, div.bottom-right-image,{
+      position: absolute;
+      top: 0;
+      left:50%;
+      right:0;
+      bottom: 0;
+      width: 25%;
+      height: 50%;
+      overflow: hidden;
+      img {
+        width:100%;
+      }
+    }
+    div.top-right-image {
+      left:75%;
+    }
+    div.bottom-left-image {
+      top: 50%;
+      left:50%;
+    }
+    div.bottom-right-image {
+      top: 50%;
+      left:75%;
+    }
   }
 }
 
