@@ -9,6 +9,10 @@ $(document).ready(() => {
   let h2Interval = null;
   let pInterval = null;
 
+  let h1IntervalBoolean = true;
+  let h2IntervalBoolean = true;
+  let pIntervalBoolean = true;
+
   $(window).resize(function(){
     // createDiaganol();
   });
@@ -41,12 +45,11 @@ $(document).ready(() => {
     clearInterval(h2Interval);
     clearInterval(pInterval);
 
-    const text = $(this).parent().next().children();
-    $.each(text, function(index, value){
-      if(index === 0) value.textContent = h1 ;
-      else if(index === 1) value.textContent = h2;
-      else value.textContent = p;
-    });
+    h1IntervalBoolean = false;
+    h2IntervalBoolean = false;
+    pIntervalBoolean = false;
+
+    resetLetters(this);
   });
 
   function shuffle(array) { // The Fisher Yates Shuffle!
@@ -62,18 +65,7 @@ $(document).ready(() => {
     return array;
   }
 
-
-  function jumbleLetters (value) {
-    let textArray = value.textContent.split('');
-    textArray = shuffle(textArray);
-    value.textContent = textArray.join('');
-  }
-
-  function clearIntervals(element, thisElement) {
-    if(element === 'h1') clearInterval(h1Interval);
-    else if(element === 'h2') clearInterval(h2Interval);
-    else clearInterval(pInterval);
-
+  function resetLetters(thisElement) {
     const text = $(thisElement).parent().next().children();
     $.each(text, function(index, value){
       if(index === 0) value.textContent = h1 ;
@@ -82,28 +74,47 @@ $(document).ready(() => {
     });
   }
 
+  function jumbleLetters (value) {
+    let textArray = value.textContent.split('');
+    textArray = shuffle(textArray);
+    value.textContent = textArray.join('');
+  }
+
+  function clearIntervals(element, textContent, thisElement) {
+    if(element === 'h1' && h1IntervalBoolean) clearInterval(h1Interval);
+    else if (element === 'h2' && h2IntervalBoolean) clearInterval(h2Interval);
+    else if (element === 'p' && pIntervalBoolean) clearInterval(pInterval);
+    else console.log();
+    $(thisElement).parent().next().children(element)[0].textContent = textContent;
+  }
+
   $('section.image-grid a.click-overlay').mouseover(function(){
     const text = $(this).parent().next().children();
     const thisElement = this;
+    h1IntervalBoolean = true;
+    h2IntervalBoolean = true;
+    pIntervalBoolean = true;
     $.each(text, function(index, value){
       if(index === 0) {
         h1 = value.textContent;
+        const hOne = value.textContent;
         h1Interval = setInterval(function(){ jumbleLetters(value);}, 70);
-        setTimeout(clearIntervals, 600, 'h1', thisElement);
+        setTimeout(clearIntervals, 600, 'h1', hOne, thisElement);
       } else if(index === 1) {
         h2 = value.textContent;
+        const hTwo = value.textContent;
         h2Interval = setInterval(function(){ jumbleLetters(value);}, 70);
-        setTimeout(clearIntervals, 1000, 'h2', thisElement);
+        setTimeout(clearIntervals, 1000, 'h2', hTwo, thisElement);
       } else {
         p = value.textContent;
+        const para = value.textContent;
         pInterval = setInterval(function(){ jumbleLetters(value);}, 70);
-        setTimeout(clearIntervals, 1400, 'p', thisElement);
+        setTimeout(clearIntervals, 1400, 'p', para, thisElement);
       }
     });
   });
 
   $('section.image-grid a.click-overlay').mousemove(function(e){
-
     const x = e.offsetX;
     const y = e.offsetY;
     const middleX = $(this).css('width').slice(0, -2)*0.5;
