@@ -139,7 +139,7 @@ $(document).ready(() => {
     document.styleSheets[0].addRule('section.image-grid div div::after',`transform: skewX(${degs}deg);`);
   }
 
-   createGrid();
+  //  createGrid();
 
   $('section.image-grid a.click-overlay').mouseout(function(){
     $(this).parent().children('div, section.images').css({'transform': `rotateY(0deg) rotateX(0deg)`});
