@@ -1,5 +1,108 @@
 
+// $(function() {
+//
+//   // Default
+//   // jQuery.scrollSpeed(100, 800);
+//
+//   // Custom Easing
+//   $.scrollSpeed(20, 1000, 'easeOutCubic');
+//
+// });
+
+// $.scrollSpeed(100, 800, 'easeOutCubic');
 $(document).ready(() => {
+
+  $('.image-grid').waypoint(function() {
+    // this.css( 'opacity', '1' );
+    // $.css( 'opacity', '1' );
+
+    const $thisElement = $(this.element);
+    console.log($(this.element));
+    console.log($(this.element).children('section.images'));
+    function fadeIn() {
+      $thisElement.children('section.images').css('opacity', '1');
+    }
+    setTimeout(fadeIn, 400);
+    $(this.element.nextElementSibling).css({'transform': 'translateY(0px)'});
+    $(this.element).css({'opacity': '1', 'transform': 'translateY(0px)'});
+  }, {
+      offset: '100%'
+  });
+
+  const imageParent = $('section.image-grid').find('img').parent();
+  imageParent.append( '<canvas> You browser does not support canvas </canvas>' );
+
+  imageParent.children('canvas').each((index, canvas) => {
+    const source = canvas.previousSibling.previousSibling.src;
+    canvas.width = canvas.scrollWidth;
+    canvas.height = canvas.scrollHeight;
+      const ctx = canvas.getContext('2d');
+      const image = new Image();
+      image.src = source;
+
+      function draw() {
+        if(!image.complete) {
+          setTimeout(draw, 50);
+          return;
+        }
+        ctx.drawImage(image,canvas.previousSibling.previousSibling.naturalWidth * 0.2,0,3,1200,0,0, canvas.width ,canvas.height);
+      }
+
+      draw();
+  });
+
+
+  //
+  // $( "li.item-ii" ).find( "li" ).css( "background-color", "red" );
+  //
+  // const canvas1 = $('#canvas-overlay')[0];
+  // console.log(canvas1, "thisone");
+  // canvas.width = canvas.scrollWidth;
+  // canvas.height = canvas.scrollHeight;
+  //
+  // const ctx = canvas.getContext('2d');
+  // const image = new Image();
+  // image.src = 'images/BubbleTwo.png';
+  // console.log(image.src);
+  // // ctx.drawImage(image,10,300,1,300,0,0,500,300);
+  // ctx.drawImage(image,20,0,1,2200,0,0, canvas.width ,canvas.height);
+
+  // $.scrollSpeed(100, 800, 'easeOutCubic');
+
+  // const waypoint = new Waypoint({
+  //   element: document.getElementById('basic-waypoint'),
+  //   handler: function() {
+  //     // notify('Basic waypoint triggered');
+  //     console.log('Basic waypoint triggered');
+  //   }
+  // });
+
+  // $(function() {
+  //
+  //   // Default
+  //   // jQuery.scrollSpeed(100, 800);
+  //
+  //   // Custom Easing
+  //   jquery.scrollSpeed(100, 800, 'easeOutCubic');
+  //
+  // });
+
+  // const waypoint2 = new Waypoint({
+  //   element: document.getElementById('basic-waypoint'),
+  //   handler: function(direction) {
+  //     // notify('Direction: ' + direction);
+  //     console.log(direction);
+  //   }
+  // });
+
+  // const waypoint3 = new Waypoint({
+  //   element: document.getElementById('px-offset-waypoint'),
+  //   handler: function(down) {
+  //     notify('I am 20px from the top of the window');
+  //     console.log('I am 20px from the top of the window');
+  //   },
+  //   offset: 20
+  // });
 
   let h1 = null;
   let h2 = null;
@@ -26,17 +129,17 @@ $(document).ready(() => {
       if (i === 3 || i === 7 ) className += ' right';
       $('section.image-grid div.grid').append(`<div class="${className}"></div>`);
     }
-    // createDiaganol();
+    createDiaganol();
   }
   //
-  // function createDiaganol () {
-  //   const divWidth =$('section.image-grid div div').css('width').slice(0, -2);
-  //   const divHeight =$('section.image-grid div div').css('height').slice(0, -2);
-  //   const degs = Math.atan(divWidth/divHeight) * (180/Math.PI);
-  //   document.styleSheets[0].addRule('section.image-grid div div::after',`transform: skewX(${degs}deg);`);
-  // }
+  function createDiaganol () {
+    const divWidth =$('section.image-grid div div').css('width').slice(0, -2);
+    const divHeight =$('section.image-grid div div').css('height').slice(0, -2);
+    const degs = Math.atan(divWidth/divHeight) * (180/Math.PI);
+    document.styleSheets[0].addRule('section.image-grid div div::after',`transform: skewX(${degs}deg);`);
+  }
 
-  //  createGrid();
+   createGrid();
 
   $('section.image-grid a.click-overlay').mouseout(function(){
     $(this).parent().children('div, section.images').css({'transform': `rotateY(0deg) rotateX(0deg)`});

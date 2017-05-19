@@ -15,7 +15,8 @@ a {
 
 body {
   font-family: 'Raleway', sans-serif;
-  background: rgba(29,65,154,.9);
+  // background: rgba(29,65,154,.9);
+  background: rgba(6, 29, 66,1);
   color: white;
 }
 
@@ -60,10 +61,13 @@ section.about {
 }
 
 section.image-grid {
+  transform:perspective(1000px) rotateX(-45deg) translateY(200px);
+  opacity: 0;
   position: relative;
   width: 100%;
-  height: 31vw;
+  height: calc(31vw - 5px);
   max-height: 510.58px;
+  transition: 1.5s ease;
   div.grid {
     width: 100%;
     height: 100%;
@@ -110,7 +114,8 @@ section.image-grid {
   }
 
   section.images {
-    transition: 0.4s ease-out;
+    opacity: 0;
+    transition: 0.9s ease-out;
     width: 100%;
     height: 100%;
     background: white;
@@ -118,11 +123,23 @@ section.image-grid {
       position: absolute;
       width: 50%;
       overflow: hidden;
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width:100%;
+        height:100%;
+        opacity: 1;
+        transition: 0.3s ease;
+      }
       img {
+        position: absolute;
         width:100%;
       }
     }
-    div.top-left-image, div.top-right-image, div.bottom-left-image, div.bottom-right-image,{
+    div.top-left-image, div.top-right-image, div.bottom-left-image, div.bottom-right-image {
       position: absolute;
       top: 0;
       left:50%;
@@ -133,6 +150,20 @@ section.image-grid {
       overflow: hidden;
       img {
         width:100%;
+        position: absolute;
+      }
+      canvas {
+
+        position: absolute;
+        // display: none;
+        opacity: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width:100%;
+        height:100%;
+        transition: 0.3s ease;
       }
     }
     div.top-right-image {
@@ -147,12 +178,32 @@ section.image-grid {
       left:75%;
     }
   }
+
+  &:hover {
+    section.images {
+      div.main-image {
+        canvas {
+          opacity: 0;
+        }
+      }
+      div.top-left-image, div.top-right-image, div.bottom-left-image, div.bottom-right-image {
+        canvas {
+          opacity: 0;
+        }
+      }
+    }
+
+  } //hover
 }
 
 h1 {
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 22px;
+  font-size: 23px;
+}
+
+main > h1 {
+  font-size: 27px;
 }
 
 h2 {
@@ -163,6 +214,9 @@ h2 {
 }
 
 section.project-info {
+  transform:perspective(1000px) rotateX(-45deg) translateY(200px);
+  transition: 2.5s ease;
+  // opacity: 1;
   margin-top: 50px;
   margin-bottom: 150px;
   height: 200px;
@@ -187,10 +241,21 @@ footer {
   }
 }
 
-
-
-
-
+::-webkit-scrollbar {
+  background: black;
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+   /* 3 */
+  background: #68C3AF;
+}
+::-webkit-scrollbar-track-piece {
+  background: #1f3456;
+}
+::-webkit-scrollbar-thumb {
+  background: #e3e8ef;
+  // opacity: 0.5;
+}
 
 
 
@@ -201,7 +266,7 @@ footer {
 
 section.image-grid {
   width: 100%;
-  height: 124vw;
+  height: calc(124vw -5px);
   max-height: 2042.32px;
   section.images {
     div.main-image {
@@ -229,7 +294,9 @@ section.image-grid {
     }
   }
 }
-
+canvas {
+  display: none;
+}
 a.click-overlay {
   display: none;
 }
