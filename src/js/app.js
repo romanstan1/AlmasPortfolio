@@ -1,24 +1,37 @@
 
-// $(function() {
-//
-//   // Default
-//   // jQuery.scrollSpeed(100, 800);
-//
-//   // Custom Easing
-//   $.scrollSpeed(20, 1000, 'easeOutCubic');
-//
-// });
+document.onreadystatechange = function(e) {
+  if(document.readyState === "interactive") {
+    var all = document.getElementsByTagName("*");
+    for (var i = 0, max = all.length; i < max; i++) {
+      check_element(all[i]);
+    }
+  }
+};
 
-// $.scrollSpeed(100, 800, 'easeOutCubic');
+function check_element(ele) {
+  var all = document.getElementsByTagName("*");
+  var totalele = all.length;
+  var per_inc = 100/all.length;
+
+  if($(ele).on()) {
+    var prog_width = per_inc + Number(document.getElementById("progress_width").value);
+    document.getElementById("progress_width").value = prog_width;
+    $("#bar2").animate({width:prog_width + "%"},10,function(){
+      $("#percent1").html(prog_width.toFixed(0) + "%");
+      if(document.getElementById("bar2").style.width === "100%") {
+        $("#bar2").css({'transition': '0.6s ease-out', 'width': '0%'});
+        $(".bar").css({'transition': '1.0s ease-out', 'width': '0%'});
+        $(".progress").fadeOut(1000, 'swing');
+        $("html").css('overflow', 'visible');
+      }
+    });
+  } else check_element(ele);
+}
+
 $(document).ready(() => {
 
   $('.image-grid').waypoint(function() {
-    // this.css( 'opacity', '1' );
-    // $.css( 'opacity', '1' );
-
     const $thisElement = $(this.element);
-    console.log($(this.element));
-    console.log($(this.element).children('section.images'));
     function fadeIn() {
       $thisElement.children('section.images').css('opacity', '1');
     }
@@ -26,7 +39,7 @@ $(document).ready(() => {
     $(this.element.nextElementSibling).css({'transform': 'translateY(0px)'});
     $(this.element).css({'opacity': '1', 'transform': 'translateY(0px)'});
   }, {
-      offset: '100%'
+      offset: '120%'
   });
 
   const imageParent = $('section.image-grid').find('img').parent();
@@ -47,62 +60,8 @@ $(document).ready(() => {
         }
         ctx.drawImage(image,canvas.previousSibling.previousSibling.naturalWidth * 0.2,0,3,canvas.previousSibling.previousSibling.naturalHeight,0,0, canvas.width ,canvas.height);
       }
-
       draw();
   });
-
-
-  //
-  // $( "li.item-ii" ).find( "li" ).css( "background-color", "red" );
-  //
-  // const canvas1 = $('#canvas-overlay')[0];
-  // console.log(canvas1, "thisone");
-  // canvas.width = canvas.scrollWidth;
-  // canvas.height = canvas.scrollHeight;
-  //
-  // const ctx = canvas.getContext('2d');
-  // const image = new Image();
-  // image.src = 'images/BubbleTwo.png';
-  // console.log(image.src);
-  // // ctx.drawImage(image,10,300,1,300,0,0,500,300);
-  // ctx.drawImage(image,20,0,1,2200,0,0, canvas.width ,canvas.height);
-
-  // $.scrollSpeed(100, 800, 'easeOutCubic');
-
-  // const waypoint = new Waypoint({
-  //   element: document.getElementById('basic-waypoint'),
-  //   handler: function() {
-  //     // notify('Basic waypoint triggered');
-  //     console.log('Basic waypoint triggered');
-  //   }
-  // });
-
-  // $(function() {
-  //
-  //   // Default
-  //   // jQuery.scrollSpeed(100, 800);
-  //
-  //   // Custom Easing
-  //   jquery.scrollSpeed(100, 800, 'easeOutCubic');
-  //
-  // });
-
-  // const waypoint2 = new Waypoint({
-  //   element: document.getElementById('basic-waypoint'),
-  //   handler: function(direction) {
-  //     // notify('Direction: ' + direction);
-  //     console.log(direction);
-  //   }
-  // });
-
-  // const waypoint3 = new Waypoint({
-  //   element: document.getElementById('px-offset-waypoint'),
-  //   handler: function(down) {
-  //     notify('I am 20px from the top of the window');
-  //     console.log('I am 20px from the top of the window');
-  //   },
-  //   offset: 20
-  // });
 
   let h1 = null;
   let h2 = null;
@@ -116,10 +75,6 @@ $(document).ready(() => {
   let h2IntervalBoolean = true;
   let pIntervalBoolean = true;
 
-  $(window).resize(function(){
-    // createDiaganol();
-  });
-
   function createGrid() {
     let className = null;
     for(let i = 0; i < 8; i++) {
@@ -131,7 +86,7 @@ $(document).ready(() => {
     }
     createDiaganol();
   }
-  //
+
   function createDiaganol () {
     const divWidth =$('section.image-grid div div').css('width').slice(0, -2);
     const divHeight =$('section.image-grid div div').css('height').slice(0, -2);

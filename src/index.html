@@ -2,13 +2,9 @@
 <html>
   <head>
     <!-- <script src="/jquery311.js" charset="utf-8"></script> -->
-    <!-- <script src="jquerywaypointsmin.js"></script> -->
+    <meta name=viewport content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <!-- <script src="http://code.nath.co/src/jQuery.min.js"></script>
-    <script src="https://rawgit.com/nathco/jQuery.scrollSpeed/master/jQuery.scrollSpeed.js"></script> -->
-
-
     <meta charset="utf-8">
     <title>Roman Stankiewicz</title>
     <!-- inject:js -->
@@ -17,6 +13,17 @@
     <!-- endinject -->
   </head>
   <body>
+    <div class='progress' id="progress_div">
+      <div>
+        <div class='bar-block' id="bar2"></div>
+        <div class='bar'></div>
+        <div class='percent' id="percent1"></div>
+        <span>Loading</span>
+      </div>
+    </div>
+    <input type="hidden" id="progress_width" value="0">
+
+
     <main>
       <h1>Roman Stankiewicz</h1>
       <h2>Front-End Web Developer</h2>

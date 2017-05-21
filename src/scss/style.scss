@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
 li {
   list-style: none;
 }
@@ -15,7 +20,6 @@ a {
 
 body {
   font-family: 'Raleway', sans-serif;
-  // background: rgba(29,65,154,.9);
   background: rgba(6, 29, 66,1);
   color: white;
 }
@@ -24,9 +28,73 @@ img {
   opacity: 0.98;
 }
 
+
+div.progress {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: rgba(6, 29, 66,1);
+  div {
+    width: 30%;
+    height: 50px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: calc(50vh - 20px);
+    display: block;
+    div.bar {
+      background: white;
+      width:102%;
+      height:1px;
+      position: absolute;
+      left:-4%;
+      top: 5px;
+      margin: 0;
+    }
+    div.bar-block {
+      background: #68C3AF;
+      background: linear-gradient(to right, #68C3AF, rgba(104, 195, 175, 0.6));
+      width:0%;
+      height:40px;
+      position: absolute;
+      left: 0;
+      top: -15px;
+      margin: 0;
+      opacity: 1;
+    }
+    div.percent {
+      font-size: 25px;
+      color: #e3e8ef;
+      margin-top: 12px;
+      margin-left: -65px;
+      height: 30px;
+      position:absolute;
+      display:block;
+      top:-25px;
+      right:-55px;
+      width:50px;
+      text-align: right;
+    }
+    span {
+      font-family: 'Raleway', sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      position: absolute;
+      font-size: 30px;
+      top: -38px;
+      left: -18px;
+    }
+  }
+}
+
+
+
+
 main {
   position: relative;
-  padding-top: 100px;
+  padding-top: 25vh;
   width: 85%;
   max-width: 1400px;
   margin: 0 auto;
@@ -245,22 +313,21 @@ footer {
 }
 
 ::-webkit-scrollbar {
-  background: black;
   width: 5px;
 }
-::-webkit-scrollbar-track {
-   /* 3 */
-  background: #68C3AF;
-}
-::-webkit-scrollbar-track-piece {
-  background: #1f3456;
-}
+// ::-webkit-scrollbar-track {
+//    /* 3 */
+//   background: #68C3AF;
+// }
+// ::-webkit-scrollbar-track-piece {
+//   background: #1f3456;
+// }
 ::-webkit-scrollbar-thumb {
   background: #e3e8ef;
   // opacity: 0.5;
 }
-
-
+//
+//
 
 
 
