@@ -105,7 +105,7 @@ section.image-grid {
       }
     }
   }
-  a.click-overlay, div.main-image, section.images {
+  a.click-overlay, div.main-image, section.images, a.responsive-overlay {
     position: absolute;
     top: 0;
     left:0;
@@ -113,9 +113,13 @@ section.image-grid {
     bottom: 0;
   }
 
+  a.responsive-overlay {
+    display: none;
+  }
+
   section.images {
     opacity: 0;
-    transition: 0.9s ease-out;
+    transition: 0.4s ease-out;
     width: 100%;
     height: 100%;
     background: white;
@@ -192,7 +196,6 @@ section.image-grid {
         }
       }
     }
-
   } //hover
 }
 
@@ -270,6 +273,18 @@ footer {
   section.image-grid {
     height: calc(124vw - 5px);
     max-height: 2042.32px;
+    div.grid {
+      display: none;
+      div {
+        display: none;
+        &::after {
+          background: red;
+        }
+      }
+    }
+    a.responsive-overlay {
+      display: block;
+    }
     section.images {
       div.main-image {
         width: 100%;
