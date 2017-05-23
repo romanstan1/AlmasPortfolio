@@ -6,7 +6,7 @@
 }
 
 html {
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -89,16 +89,37 @@ div.progress {
   }
 }
 
-
-
+div.scroller-heat {
+  position: fixed;
+  top: '';
+  bottom:'';
+  right: 0;
+  width: 15px;
+  height: 0%;
+  margin-top: 0px;
+}
 
 main {
   position: relative;
-  padding-top: 25vh;
+  // padding-top: 25vh;
   width: 85%;
   max-width: 1400px;
   margin: 0 auto;
   height: 100%;
+}
+
+section.page-block {
+  width: 100%;
+  height:100vh;
+  display: table;
+  // margin-bottom: 25vh;
+  // padding-top: 5vh;
+  //margin-top: -100vh;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  //display: none;
+  transition: opacity 1s ease;
 }
 
 section {
@@ -109,33 +130,39 @@ section {
 }
 
 section.about {
-  padding-top: 50px;
+
   padding-bottom: 50px;
-  border-bottom: 1px solid #68C3AF;
+  padding-top: 30px;
+  // border-bottom: 1px solid #68C3AF;
   margin-bottom: 150px;
 
   p {
+    margin: 0 auto;
+    width: 90%;
     display: block;
   }
-
-  a {
-    margin-top: 50px;
-    margin-right: 4%;
-    line-height: 30px;
-    display: inline-block;
-    font-weight: 300;
-    color: #68C3AF;
+  div {
+    margin: 0 auto;
+    width: 90%;
+    a {
+      margin-top: 30px;
+      margin-right: 4%;
+      line-height: 30px;
+      display: inline-block;
+      font-weight: 300;
+      color: #68C3AF;
+    }
   }
 }
 
 section.image-grid {
-  transform:perspective(1000px) rotateX(-45deg) translateY(200px);
-  opacity: 0;
+  //transform:perspective(2000px) rotateX(0deg) translateY(0px);
   position: relative;
-  width: 100%;
-  height: calc(31vw - 5px);
+  width: 90%;
+  height: calc(31vw * 0.9);
   max-height: 510.58px;
-  transition: 1.5s ease;
+  transition: 2.8s ease;
+  margin: 0 auto;
   div.grid {
     width: 100%;
     height: 100%;
@@ -173,6 +200,7 @@ section.image-grid {
       }
     }
   }
+
   a.click-overlay, div.main-image, section.images, a.responsive-overlay {
     position: absolute;
     top: 0;
@@ -186,7 +214,7 @@ section.image-grid {
   }
 
   section.images {
-    opacity: 0;
+    // opacity: 0.7;
     transition: 0.4s ease-out;
     width: 100%;
     height: 100%;
@@ -195,6 +223,11 @@ section.image-grid {
       position: absolute;
       width: 50%;
       overflow: hidden;
+      img {
+        // display: none;
+        position: absolute;
+        width:100%;
+      }
       canvas {
         position: absolute;
         top: 0;
@@ -205,10 +238,6 @@ section.image-grid {
         height:100%;
         opacity: 1;
         transition: 0.3s ease;
-      }
-      img {
-        position: absolute;
-        width:100%;
       }
     }
     div.top-left-image, div.top-right-image, div.bottom-left-image, div.bottom-right-image {
@@ -273,8 +302,11 @@ h1 {
   font-size: 23px;
 }
 
-main > h1 {
+main > section > h1 {
   font-size: 27px;
+  margin: 0 auto;
+  margin-top: 25vh;
+  width: 90%;
 }
 
 h2 {
@@ -284,13 +316,20 @@ h2 {
   margin-top: 5px;
 }
 
+main > section > h2 {
+  margin: 0 auto;
+  margin-top: 5px;
+  width: 90%;
+}
 section.project-info {
-  transform:perspective(1000px) rotateX(-45deg) translateY(200px);
-  transition: 2.5s ease;
-  // opacity: 1;
+  // transform:perspective(2000px) rotateX(60deg) translateY(-1000px);
+  //opacity: 0;
+  transition: 3s ease;
+  margin: 0 auto;
   margin-top: 50px;
-  margin-bottom: 150px;
   height: 200px;
+  width: 90%;
+  position: relative;
   p {
     margin-top: 20px;
   }
@@ -302,18 +341,18 @@ footer {
     text-align: center;
     font-size: 14px;
     text-transform: uppercase;
-    margin-top:80px;
+    margin-top:-50px;
     background: -webkit-linear-gradient(left,#35d6d1 30%,#ecff28 70%) no-repeat;
     -webkit-background-clip: text;
     color: #b4f25f;
     -webkit-text-fill-color: transparent;
     opacity: 1;
-    margin-top: -70px;
+    margin-bottom: 70px;
   }
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 0px;
 }
 // ::-webkit-scrollbar-track {
 //    /* 3 */
@@ -338,7 +377,7 @@ footer {
   }
 
   section.image-grid {
-    height: calc(124vw - 5px);
+    height:124vw;
     max-height: 2042.32px;
     div.grid {
       display: none;

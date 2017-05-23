@@ -18,28 +18,134 @@ function check_element(ele) {
     $("#bar2").animate({width:prog_width + "%"},10,function(){
       $("#percent1").html(prog_width.toFixed(0) + "%");
       if(document.getElementById("bar2").style.width === "100%") {
-        $("#bar2").css({'transition': '0.6s ease-out', 'width': '0%'});
-        $(".bar").css({'transition': '1.0s ease-out', 'width': '0%'});
-        $(".progress").fadeOut(1000, 'swing');
-        $("html").css('overflow', 'visible');
+        $("#bar2").css({"transition": "0.6s ease-out", "width": "0%"});
+        $(".bar").css({"transition": "1.0s ease-out", "width": "0%"});
+        $(".progress").fadeOut(1000, "swing");
+        // $("html").css('overflow', 'visible');
       }
     });
   } else check_element(ele);
 }
 
 $(document).ready(() => {
-  console.log('document loaded');
-  $('.image-grid').waypoint(function() {
-    const $thisElement = $(this.element);
-    function fadeIn() {
-      $thisElement.children('section.images').css('opacity', '1');
-    }
-    setTimeout(fadeIn, 400);
-    $(this.element.nextElementSibling).css({'transform': 'translateY(0px)'});
-    $(this.element).css({'opacity': '1', 'transform': 'translateY(0px)'});
-  }, {
-      offset: '120%'
-  });
+
+
+  // $('.image-grid').waypoint(function(direction) {
+  //   // console.log(direction);
+  //   const $thisElement = $(this.element);
+  //   function fadeIn() {
+  //     $thisElement.children('section.images').css('opacity', '1');
+  //   }
+  //   setTimeout(fadeIn, 400);
+  //   $(this.element.nextElementSibling).css({'transform': 'translateY(0px)'});
+  //   $(this.element).css({'opacity': '1', 'transform': 'translateY(0px)'});
+  // }, {
+  //     offset: '120%'
+  // });
+
+
+let level = 0;
+let deltaYBoolean = true;
+const body = $("body");
+const $scroller = $("div.scroller-heat");
+const $pageBlock = $("section.page-block");
+// $pageBlock.css("display", "hidden");
+
+$(window).bind('mousewheel', function(event) {
+  const amount = (event.originalEvent.deltaY / 40) * 50;
+  const height = Math.abs(amount);
+  const viewportHeight = $( window ).height();
+
+  if(amount < 0) $scroller.css({'bottom':'', 'top': '50%'});
+  else $scroller.css({'bottom':'50%', 'top': ''});
+
+  if(height < 1.5) $scroller.css({'display':'none'});
+  else if (height > 50) $scroller.css({'background':'dodgerblue', 'display':'block' });
+  else $scroller.css({'background':'red', 'display':'block'});
+
+  $scroller.css('height', height + "%");
+
+  if((event.originalEvent.deltaY > - 40 && event.originalEvent.deltaY < 40) && deltaYBoolean){
+
+  } else if(deltaYBoolean) {
+    deltaYBoolean = false;
+    const direction = event.originalEvent.wheelDelta / Math.abs(event.originalEvent.wheelDelta);
+
+
+
+    // if(level === 0 && direction > 0) $('section.aboutBlock').css({ opacity:0, transform: 'perspective(100px) rotateX(-60deg) translateY(-1000px)' });
+    // if(level === 0 && direction > 0) {
+    //   console.log('hit',   $('.aboutBlock'));
+    // }
+    // if(level === 0 && direction < 0) $('section.aboutBlock').css({ opacity:1, transform: 'perspective(1000px) rotateX(0deg) translateY(0px)' });
+
+    // body.animate({scrollTop:level * viewportHeight * 1.25 * 0}, 1500, 'swing', function() {
+    //   deltaYBoolean = true;
+    // });
+
+    const opacity = (direction * 0.5) + 0.5;
+      $pageBlock.eq(level).css({ "opacity":0 }).promise().done(() => {
+        level = level + direction;
+        if (level < 0) level = 0;
+        else if(level > 4) level = 4;
+
+        $pageBlock.eq(level).css({"display": "table"});
+
+        setTimeout( (() => {
+          $pageBlock.eq(level).css({ "opacity":1 });
+          $pageBlock.eq(level-direction).css({"display": "none"});
+          //$pageBlock.eq(level).css({"display": "block"});
+          deltaYBoolean = true;
+        }), 1000);
+      });
+
+  //  } else if(direction > 0 && level <= 7 ) {
+      //
+      // $('section.aboutBlock').css("opacity","0").promise().done(() => {
+      //   // alert( 'color is yellow!' );
+      //   setTimeout( (() => console.log('FINISHED')), 2500);
+      // });
+
+
+
+    //  level ++;
+      // $('.image-grid').eq(level-1).css({ opacity:1, transform: 'perspective(1000px) rotateX(0deg) translateY(0px)' });
+      // $('.project-info').eq(level-1).css({ opacity:1, transform: 'perspective(1000px) rotateX(0deg) translateY(0px)' });
+      //
+      // $('.image-grid').eq(level-2).css({ opacity:0, transform: 'perspective(2000px) rotateX(-60deg) translateY(1000px)' });
+      // $('.project-info').eq(level-2).css({ opacity:0, transform: 'perspective(2000px) rotateX(-60deg) translateY(1000px)' });
+    // } else if (level > 0){
+      // level --;
+      // $('.image-grid').eq(level-1).css({ opacity:0, transform: 'perspective(1000px) rotateX(45deg) translateY(-200px)' });
+      // $('.project-info').eq(level-1).css({ opacity:0, transform: 'perspective(1000px) rotateX(45deg) translateY(-200px)' });
+    // }
+    // else level = 0;
+    // body.animate({scrollTop:level * viewportHeight * 1.25 * 0}, 1500, 'swing', function() {
+    //   deltaYBoolean = true;
+
+      //console.log(  $('.image-grid').eq(level-1)[0]);
+      //console.log($('.image-grid').eq(level-1));
+      //$('.image-grid').eq(level-1)[0].addClass("animateIn");
+      // $('.image-grid').animate({opacity:0.1}, 500, 'swing');
+      // $('.image-grid').eq(level-1).css({
+      //   opacity:1,
+      //   transform: 'perspective(1000px) rotateX(0deg) translateY(0px)'
+      // });
+      //$('.image-grid').eq(level-1).animate({
+        // opacity:1,
+        // // transform: 'perspective(1000px) rotateX(0deg) translateY(0px)'
+        // step: function(now,fx) {
+        //   $(this).css('transform','rotateX(0deg) translateY(0px)');
+        // }
+        // // translateY(0px)
+
+    //  }, 500, 'swing');
+
+    // });
+
+  }
+});
+
 
   const imageParent = $('section.image-grid').find('img').parent();
   imageParent.append( '<canvas> You browser does not support canvas </canvas>' );
@@ -61,6 +167,11 @@ $(document).ready(() => {
       }
       draw();
   });
+
+  $(window).on('load', function() {
+    $pageBlock.css("display", "none");
+    $pageBlock.eq(level).css({"opacity":1,"display":"block"});
+  })
 
   let h1 = null;
   let h2 = null;
