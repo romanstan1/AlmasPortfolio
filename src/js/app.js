@@ -22,10 +22,14 @@ function check_element(ele) {
         $(".bar").css({"transition": "1.0s ease-out", "width": "0%"});
         $(".progress").fadeOut(1000, "swing");
         // $("html").css('overflow', 'visible');
+        // initialFade();
       }
     });
   } else check_element(ele);
 }
+
+
+
 
 $(document).ready(() => {
 
@@ -84,15 +88,16 @@ $(window).bind('mousewheel', function(event) {
     // });
 
     const opacity = (direction * 0.5) + 0.5;
-      $pageBlock.eq(level).css({ "opacity":0 }).promise().done(() => {
+      $pageBlock.eq(level).css({ "opacity":0, "transform":`perspective(2000px) rotateX(${direction * -60}deg) translateY(${direction * 600}px)`}).promise().done(() => {
+        // $pageBlock.eq(level).css({"transform":"perspective(1000px) rotateX(0deg) translateY(0px)"});
         level = level + direction;
         if (level < 0) level = 0;
         else if(level > 4) level = 4;
 
-        $pageBlock.eq(level).css({"display": "table"});
+        $pageBlock.eq(level).css({"display": "block"});
 
         setTimeout( (() => {
-          $pageBlock.eq(level).css({ "opacity":1 });
+          $pageBlock.eq(level).css({ "opacity":1, "transform":"perspective(1000px) rotateX(0deg) translateY(0px)"});
           $pageBlock.eq(level-direction).css({"display": "none"});
           //$pageBlock.eq(level).css({"display": "block"});
           deltaYBoolean = true;
@@ -169,9 +174,12 @@ $(window).bind('mousewheel', function(event) {
   });
 
   $(window).on('load', function() {
-    $pageBlock.css("display", "none");
-    $pageBlock.eq(level).css({"opacity":1,"display":"block"});
-  })
+    $pageBlock.slice(1).css("display", "none");
+    //$pageBlock.eq(level).css({"opacity":1, "display":"block"});
+    console.log(level);
+    $pageBlock.eq(level).css({"opacity":1,"transform":"perspective(1000px) rotateX(0deg) translateY(0px)"});
+      //$pageBlock.eq(level).css({"transform":"perspective(1000px) rotateX(0deg) translateY(0px)"});
+  });
 
   let h1 = null;
   let h2 = null;

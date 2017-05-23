@@ -111,7 +111,7 @@ main {
 section.page-block {
   width: 100%;
   height:100vh;
-  display: table;
+  display: block;
   // margin-bottom: 25vh;
   // padding-top: 5vh;
   //margin-top: -100vh;
@@ -119,10 +119,12 @@ section.page-block {
   top: 0;
   opacity: 0;
   //display: none;
-  transition: opacity 1s ease;
+  transform: perspective(2000px) rotateX(60deg) translateY(-600px);
+  transition: 1s ease;
 }
 
 section {
+  font-size: 14px;
   p {
     text-align: justify;
     font-weight: 300;
@@ -133,7 +135,6 @@ section.about {
 
   padding-bottom: 50px;
   padding-top: 30px;
-  // border-bottom: 1px solid #68C3AF;
   margin-bottom: 150px;
 
   p {
@@ -157,6 +158,10 @@ section.about {
 
 section.image-grid {
   //transform:perspective(2000px) rotateX(0deg) translateY(0px);
+  // display: table-cell;
+  // vertical-align: middle;
+  top:50%;
+  transform: translateY(-75%);
   position: relative;
   width: 90%;
   height: calc(31vw * 0.9);
@@ -300,6 +305,7 @@ h1 {
   font-weight: 700;
   text-transform: uppercase;
   font-size: 23px;
+
 }
 
 main > section > h1 {
@@ -324,10 +330,12 @@ main > section > h2 {
 section.project-info {
   // transform:perspective(2000px) rotateX(60deg) translateY(-1000px);
   //opacity: 0;
-  transition: 3s ease;
+  // transition: 3s ease;
   margin: 0 auto;
-  margin-top: 50px;
-  height: 200px;
+  top:calc(50% - (27.9vw));
+
+  transform: translateY(calc((27.9vw * 0.25) + 15px));
+  // height: 200px;
   width: 90%;
   position: relative;
   p {
@@ -371,106 +379,106 @@ footer {
 
 
 
-@media only screen and (max-width: 770px) {
-  img {
-    position: relative;
-  }
-
-  section.image-grid {
-    height:124vw;
-    max-height: 2042.32px;
-    div.grid {
-      display: none;
-      div {
-        display: none;
-        &::after {
-          background: red;
-        }
-      }
-    }
-    a.responsive-overlay {
-      display: block;
-    }
-    section.images {
-      div.main-image {
-        width: 100%;
-      }
-      div.top-left-image, div.top-right-image, div.bottom-left-image, div.bottom-right-image,{
-        position: absolute;
-        top: 50%;
-        left:0;
-        right:0;
-        bottom: 0;
-        width: 50%;
-        height: 25%;
-      }
-      div.top-right-image {
-        left:50%;
-      }
-      div.bottom-left-image {
-        top: 75%;
-        left:0%;
-      }
-      div.bottom-right-image {
-        top: 75%;
-        left:50%;
-      }
-    }
-  }
-  canvas {
-    display: none;
-  }
-  a.click-overlay {
-    display: none;
-  }
-
-  section.about {
-    p {
-      margin-bottom: 5%;
-    }
-    a {
-      margin-top: 1%;
-      margin-right: 4%;
-      line-height: 30px;
-      display: block;
-    }
-  }
-  footer {
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  section.project-info {
-    margin-top: 50px;
-    margin-bottom: 100px;
-    height: 250px;
-    p {
-      margin-top: 20px;
-    }
-  }
-}
-
-@media only screen and (max-width: 610px) {
-  section.project-info {
-    height: 300px;
-  }
-  footer {
-    margin-top: 100px;
-    margin-bottom: 100px;
-  }
-}
-
-@media only screen and (max-width: 410px) {
-  section.project-info {
-    height: 400px;
-    margin-bottom: 50px;
-  }
-}
-
-@media only screen and (max-width: 350px) {
-  section.project-info {
-    height: 450px;
-  }
-  footer {
-    margin-top: 130px;
-  }
-}
+// @media only screen and (max-width: 770px) {
+//   img {
+//     position: relative;
+//   }
+//
+//   section.image-grid {
+//     height:124vw;
+//     max-height: 2042.32px;
+//     div.grid {
+//       display: none;
+//       div {
+//         display: none;
+//         &::after {
+//           background: red;
+//         }
+//       }
+//     }
+//     a.responsive-overlay {
+//       display: block;
+//     }
+//     section.images {
+//       div.main-image {
+//         width: 100%;
+//       }
+//       div.top-left-image, div.top-right-image, div.bottom-left-image, div.bottom-right-image,{
+//         position: absolute;
+//         top: 50%;
+//         left:0;
+//         right:0;
+//         bottom: 0;
+//         width: 50%;
+//         height: 25%;
+//       }
+//       div.top-right-image {
+//         left:50%;
+//       }
+//       div.bottom-left-image {
+//         top: 75%;
+//         left:0%;
+//       }
+//       div.bottom-right-image {
+//         top: 75%;
+//         left:50%;
+//       }
+//     }
+//   }
+//   canvas {
+//     display: none;
+//   }
+//   a.click-overlay {
+//     display: none;
+//   }
+//
+//   section.about {
+//     p {
+//       margin-bottom: 5%;
+//     }
+//     a {
+//       margin-top: 1%;
+//       margin-right: 4%;
+//       line-height: 30px;
+//       display: block;
+//     }
+//   }
+//   footer {
+//     margin-top: 50px;
+//     margin-bottom: 50px;
+//   }
+//   section.project-info {
+//     margin-top: 50px;
+//     margin-bottom: 100px;
+//     height: 250px;
+//     p {
+//       margin-top: 20px;
+//     }
+//   }
+// }
+//
+// @media only screen and (max-width: 610px) {
+//   section.project-info {
+//     height: 300px;
+//   }
+//   footer {
+//     margin-top: 100px;
+//     margin-bottom: 100px;
+//   }
+// }
+//
+// @media only screen and (max-width: 410px) {
+//   section.project-info {
+//     height: 400px;
+//     margin-bottom: 50px;
+//   }
+// }
+//
+// @media only screen and (max-width: 350px) {
+//   section.project-info {
+//     height: 450px;
+//   }
+//   footer {
+//     margin-top: 130px;
+//   }
+// }
