@@ -30,6 +30,7 @@ function check_element(ele) {
           $("section.page-block").slice(1).css("display", "none");
           $("section.page-block").eq(0).css({"opacity":1,"transform":"perspective(1000px) rotateX(0deg) translateY(0px)"});
           $("body").css("background",`${backgroundColors[0]}`);
+          $("section.responsive-block").css("background",`${backgroundColors[0]}`);
           $("h1").css("color",`${h1Colors[0]}`);
           $("h2").css("color",`${h2Colors[0]}`);
           $("p").css("color",`${textColors[0]}`);
@@ -51,6 +52,7 @@ const $scroller = $("div.scroller-heat");
 const $pageBlock = $("section.page-block");
 
 const $body = $("body");
+const $responsiveBlock = $("section.responsive-block");
 const $h1 = $("h1");
 const $h2 = $("h2");
 const $text = $("p");
@@ -90,8 +92,8 @@ $(window).bind('mousewheel', function(event) {
       if (level < 0) level = 0;
       else if(level > 4) level = 4;
 
-      console.log(level);
       $body.css("background",`${backgroundColors[level]}`);
+      $responsiveBlock.css("background",`${backgroundColors[level]}`);
       $h1.css("color",`${h1Colors[level]}`);
       $h2.css("color",`${h2Colors[level]}`);
       $text.css("color",`${textColors[level]}`);

@@ -381,11 +381,55 @@ footer {
 }
 
 section.responsive-block {
+  position: fixed;
   display: none;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: #3454D1;
+  h1 {
+    margin-top: 15%;
+    color: #34D1BF;
+    padding-top: 10px;
+  }
+  h2.message {
+    margin-top: 50px;
+    font-size: 18px;
+    color: #34D1BF;
+  }
+  h2 {
+    margin-top: 10px;
+    color: #070707;
+  }
+  p {
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 90%;
+    color: #FDFFFC;
+  }
+  div {
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 50px;
+    p {
+      margin-top: 00px;
+      width: 20%;
+      display: inline-block;
+      a {
+        color: inherit;
+        font-weight: 300;
+      }
+    }
+  }
 }
 //
 //
-
+@media only screen and (max-width: 840px) {
+  section.responsive-block {
+    display: block;
+  }
+}
 
 
 
