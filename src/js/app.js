@@ -21,8 +21,6 @@ function check_element(ele) {
         $("#bar2").css({"transition": "0.6s ease-out", "width": "0%"});
         $(".bar").css({"transition": "1.0s ease-out", "width": "0%"});
         $(".progress").fadeOut(1000, "swing");
-        // $("html").css('overflow', 'visible');
-        // initialFade();
       }
     });
   } else check_element(ele);
@@ -33,27 +31,22 @@ function check_element(ele) {
 
 $(document).ready(() => {
 
-
-  // $('.image-grid').waypoint(function(direction) {
-  //   // console.log(direction);
-  //   const $thisElement = $(this.element);
-  //   function fadeIn() {
-  //     $thisElement.children('section.images').css('opacity', '1');
-  //   }
-  //   setTimeout(fadeIn, 400);
-  //   $(this.element.nextElementSibling).css({'transform': 'translateY(0px)'});
-  //   $(this.element).css({'opacity': '1', 'transform': 'translateY(0px)'});
-  // }, {
-  //     offset: '120%'
-  // });
-
-
 let level = 0;
 let deltaYBoolean = true;
-const body = $("body");
+const $body = $("body");
 const $scroller = $("div.scroller-heat");
 const $pageBlock = $("section.page-block");
-// $pageBlock.css("display", "hidden");
+
+const $h1 = $("h1");
+const $h2 = $("h2");
+const $text = $("p");
+
+const backgroundColors = ['#3454D1', '#DAFFED', '#292F36', '#F15946', '#C8E0F4'];
+const h1Colors =         ['#34D1BF', '#34D1BF', '#FF6B6B', '#EEE5E9', '#6247AA'];
+const h2Colors =         ['#070707', '#070707', '#2EC4B6', '#08415C', '#062726'];
+const textColors =       ['#FDFFFC', '#FDFFFC', '#FDFFFC', '#EEE5E9', '#062726'];
+
+
 
 $(window).bind('mousewheel', function(event) {
   const amount = (event.originalEvent.deltaY / 40) * 50;
@@ -88,21 +81,24 @@ $(window).bind('mousewheel', function(event) {
     // });
 
     const opacity = (direction * 0.5) + 0.5;
-      $pageBlock.eq(level).css({ "opacity":0, "transform":`perspective(2000px) rotateX(${direction * -60}deg) translateY(${direction * 600}px)`}).promise().done(() => {
-        // $pageBlock.eq(level).css({"transform":"perspective(1000px) rotateX(0deg) translateY(0px)"});
-        level = level + direction;
-        if (level < 0) level = 0;
-        else if(level > 4) level = 4;
+    $pageBlock.eq(level).css({ "opacity":0, "transform":`perspective(2000px) rotateX(${direction * -60}deg) translateY(${direction * 600}px)`}).promise().done(() => {
 
-        $pageBlock.eq(level).css({"display": "block"});
 
-        setTimeout( (() => {
-          $pageBlock.eq(level).css({ "opacity":1, "transform":"perspective(1000px) rotateX(0deg) translateY(0px)"});
-          $pageBlock.eq(level-direction).css({"display": "none"});
-          //$pageBlock.eq(level).css({"display": "block"});
-          deltaYBoolean = true;
-        }), 1000);
-      });
+      $body.css("background",`${backgroundColors[level]}`);
+      $h1.css("color",`${h1Colors[level]}`);
+      $h2.css("color",`${h2Colors[level]}`);
+      $text.css("color",`${textColors[level]}`);
+
+      level = level + direction;
+      if (level < 0) level = 0;
+      else if(level > 4) level = 4;
+      $pageBlock.eq(level).css({"display": "block"});
+      setTimeout( (() => {
+        $pageBlock.eq(level).css({ "opacity":1, "transform":"perspective(1000px) rotateX(0deg) translateY(0px)"});
+        $pageBlock.eq(level-direction).css({"display": "none"});
+        deltaYBoolean = true;
+      }), 1000);
+    });
 
   //  } else if(direction > 0 && level <= 7 ) {
       //
@@ -125,7 +121,7 @@ $(window).bind('mousewheel', function(event) {
       // $('.project-info').eq(level-1).css({ opacity:0, transform: 'perspective(1000px) rotateX(45deg) translateY(-200px)' });
     // }
     // else level = 0;
-    // body.animate({scrollTop:level * viewportHeight * 1.25 * 0}, 1500, 'swing', function() {
+    // $body.animate({scrollTop:level * viewportHeight * 1.25 * 0}, 1500, 'swing', function() {
     //   deltaYBoolean = true;
 
       //console.log(  $('.image-grid').eq(level-1)[0]);
