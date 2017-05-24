@@ -47,6 +47,7 @@ function check_element(ele) {
 $(document).ready(() => {
 
 let level = 0;
+let oldLevel = 0;
 let deltaYBoolean = true;
 const $scroller = $("div.scroller-heat");
 const $pageBlock = $("section.page-block");
@@ -73,8 +74,8 @@ $(window).bind('mousewheel', function(event) {
   else $scroller.css({'bottom':'50%', 'top': ''});
 
   if(height < 1.5) $scroller.css({'display':'none'});
-  else if (height > 50) $scroller.css({'background': 'rgba(237, 64, 64, 0.9)', 'display':'block' });
-  else $scroller.css({'background':'rgba(249, 249, 249, 0.8)', 'display':'block'});
+  else if (height > 50) $scroller.css({'background': `${h1Colors[oldLevel]}`, 'display':'block' });
+  else $scroller.css({'background':`${h2Colors[oldLevel]}`, 'display':'block'});
 
   $scroller.css('height', height + "%");
 
@@ -103,9 +104,9 @@ $(window).bind('mousewheel', function(event) {
         $pageBlock.eq(level).css({ "opacity":1, "transform":"perspective(1000px) rotateX(0deg) translateY(0px)"});
         $pageBlock.eq(level-direction).css({"display": "none"});
         deltaYBoolean = true;
+        oldLevel = level;
       }), 1000);
     });
-
   }
 });
 
@@ -163,7 +164,7 @@ $(window).bind('mousewheel', function(event) {
       if (i < 4 ) className = 'top';
       if (i === 0 || i === 4) className += ' left';
       if (i === 3 || i === 7 ) className += ' right';
-      $('section.image-grid div.grid').append(`<div class="${className}"></div>`);
+      $('section.image-grid div.grid').slice(1).append(`<div class="${className}"></div>`);
     }
     createDiaganol();
   }
@@ -177,7 +178,7 @@ $(window).bind('mousewheel', function(event) {
 
    createGrid();
 
-  $('section.image-grid a.click-overlay').mouseout(function(){
+  $('section.image-grid .click-overlay').mouseout(function(){
     $(this).parent().children('div, section.images').css({'transform': `rotateY(0deg) rotateX(0deg)`});
 
     clearInterval(h1Interval);
@@ -187,7 +188,7 @@ $(window).bind('mousewheel', function(event) {
     h1IntervalBoolean = false;
     h2IntervalBoolean = false;
     pIntervalBoolean = false;
-
+    console.log($(this).parent()[0].className ==="image-grid about");
     resetLetters(this);
   });
 
@@ -227,7 +228,7 @@ $(window).bind('mousewheel', function(event) {
     $(thisElement).parent().next().children(element)[0].textContent = textContent;
   }
 
-  $('section.image-grid a.click-overlay').mouseover(function(){
+  $('section.image-grid .click-overlay').mouseover(function(){
     const text = $(this).parent().next().children();
     const thisElement = this;
     h1IntervalBoolean = true;
@@ -253,7 +254,7 @@ $(window).bind('mousewheel', function(event) {
     });
   });
 
-  $('section.image-grid a.click-overlay').mousemove(function(e){
+  $('section.image-grid .click-overlay').mousemove(function(e){
     const x = e.offsetX;
     const y = e.offsetY;
     const middleX = $(this).css('width').slice(0, -2)*0.5;
