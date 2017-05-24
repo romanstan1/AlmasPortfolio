@@ -18,6 +18,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  transition: 2s ease;
+}
+
 body {
   transition: 2s ease;
   font-family: 'Raleway', sans-serif;
@@ -139,8 +143,8 @@ section.about {
   margin-bottom: 150px;
 
   p {
-    margin: 0 auto;
-    width: 90%;
+    margin-left: 5%;
+    width: 45%;
     display: block;
   }
   div {
@@ -306,7 +310,7 @@ h1 {
   font-weight: 700;
   text-transform: uppercase;
   font-size: 23px;
-
+  transition: 2s ease;
 }
 
 main > section > h1 {
@@ -317,10 +321,11 @@ main > section > h1 {
 }
 
 h2 {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 16px;
   color: #68C3AF;
   margin-top: 5px;
+  transition: 2s ease;
 }
 
 main > section > h2 {
@@ -373,6 +378,10 @@ footer {
 ::-webkit-scrollbar-thumb {
   background: #e3e8ef;
   // opacity: 0.5;
+}
+
+section.responsive-block {
+  display: none;
 }
 //
 //
