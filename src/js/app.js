@@ -66,7 +66,7 @@ const $text = $("p");
 
 
 $(window).bind('mousewheel', function(event) {
-  const amount = (event.originalEvent.deltaY / 40) * 50;
+  const amount = (event.originalEvent.deltaY / 20) * 50;
   const height = Math.abs(amount);
   const viewportHeight = $( window ).height();
 
