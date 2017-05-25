@@ -79,7 +79,7 @@ $(window).bind('mousewheel', function(event) {
 
   $scroller.css('height', height + "%");
 
-  if((event.originalEvent.deltaY > - 40 && event.originalEvent.deltaY < 40) && deltaYBoolean){
+  if((event.originalEvent.deltaY > - 20 && event.originalEvent.deltaY < 20) && deltaYBoolean){
 
   } else if(deltaYBoolean) {
     deltaYBoolean = false;
