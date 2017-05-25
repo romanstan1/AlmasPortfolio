@@ -117,9 +117,6 @@ section.page-block {
   width: 100%;
   height:100vh;
   display: block;
-  // margin-bottom: 25vh;
-  // padding-top: 5vh;
-  //margin-top: -100vh;
   position: absolute;
   top: 0;
   opacity: 0;
@@ -134,11 +131,9 @@ section.page-block {
 
     a {
       margin-right: 5%;
-      color: #34D1BF;
-    //   p {
-    //     color: #3454D1;
-    //     display: inline-block;
-    //   }
+      color: #070707;
+      font-size: 22px;
+      font-weight: 600;
     }
   }
 }
@@ -151,48 +146,9 @@ section {
   }
 }
 
-// section.about {
-//   position: relative;
-//   top: 50%;
-//   transform: translateY(-50%);
-//   height: 50vh;
-//   float: right;
-//   background: grey;
-//   display: table;
-//   padding: 0px 30px 0px 30px;
-//   margin-bottom: 150px;
-//   width: 50%;
-//   p {
-//     width: 100%;
-//     display: block;
-//   }
-//   div {
-//     // background: red;
-//     width: 100%;
-//     a {
-//       margin-top: 30px;
-//       margin-right: 6%;
-//       line-height: 30px;
-//       display: inline-block;
-//       font-weight: 300;
-//       color: #68C3AF;
-//     }
-//   }
-//   h1, h2 {
-//     text-align: right;
-//   }
-//   &:first-child {
-//     float: left;
-//   }
-// }
-
-
-
 
 section.image-grid {
-  //transform:perspective(2000px) rotateX(0deg) translateY(0px);
-  // display: table-cell;
-  // vertical-align: middle;
+
   top:50%;
   transform: translateY(-75%);
   position: relative;
@@ -241,32 +197,44 @@ section.image-grid {
 
   &.about {
     width: 100%;
-    height: 60%;
+    height: 100%;
     position: relative;
-    top:45%;
+    top:50%;
     transform: translateY(-50%);
     div.grid {
+      border: 0px solid white;
       display: table;
       section.left-bit {
-        width: 95%;
-        padding: 35px;
+        width: 100%;
+        padding: 25px;
         padding-top: 30px;
-        // display: table-cell;
-        // vertical-align:;
-        h1 {
-          // text-align: right;
-          font-size: 27px;
-        }
-        h2 {
-          font-size: 20px;
-        }
       }
       section.right-bit {
-        width: 55%;
-        padding: 35px;
+        h1 {
+          // text-align: center;
+          display: inline;
+          font-size: 32px;
+        }
+        h2 {
+          // text-align: center;
+          display: inline;
+          font-size: 26px;
+          font-weight: 700;
+        }
+        width: 100%;
+        font-weight: 500;
+        padding: 25px;
+        font-size: 24px;
         padding-top: 0px;
         p {
+          display: inline;
+          font-weight: 500;
           padding-top: 0px;
+        }
+        span {
+          font-weight: 700;
+          display: inline;
+          color:#070707;
         }
       }
     }
