@@ -21,7 +21,8 @@ function check_element(ele) {
     document.getElementById("progress_width").value = prog_width;
     $("#bar2").animate({width:prog_width + "%"},10,function(){
       $("#percent1").html(prog_width.toFixed(0) + "%");
-      if(document.getElementById("bar2").style.width === "100%") {
+      // console.log(document.getElementById("bar2").style.width);
+      if(parseFloat(document.getElementById("bar2").style.width) >= 100) {
         $("#bar2").css({"transition": "0.6s ease-out", "width": "0%"});
         $(".bar").css({"transition": "1.0s ease-out", "width": "0%"});
         $(".progress").fadeOut(1000, "swing");
@@ -70,10 +71,10 @@ $(window).bind('mousewheel', function(event) {
   const height = Math.abs(amount);
   const viewportHeight = $( window ).height();
 
-  if(amount < 0) $scroller.css({'bottom':'', 'top': '50%'});
+  if(amount > 0) $scroller.css({'bottom':'', 'top': '50%'});
   else $scroller.css({'bottom':'50%', 'top': ''});
 
-  if(height < 1.5) $scroller.css({'display':'none'});
+  if(height < 3.5) $scroller.css({'display':'none'});
   else if (height > 50) $scroller.css({'background': `${h1Colors[oldLevel]}`, 'display':'block' });
   else $scroller.css({'background':`${h2Colors[oldLevel]}`, 'display':'block'});
 
@@ -83,7 +84,7 @@ $(window).bind('mousewheel', function(event) {
 
   } else if(deltaYBoolean) {
     deltaYBoolean = false;
-    const direction = event.originalEvent.wheelDelta / Math.abs(event.originalEvent.wheelDelta);
+    const direction = - event.originalEvent.wheelDelta / Math.abs(event.originalEvent.wheelDelta);
 
     const opacity = (direction * 0.5) + 0.5;
     $pageBlock.eq(level).css({ "opacity":0, "transform":`perspective(2000px) rotateX(${direction * -60}deg) translateY(${direction * 600}px)`}).promise().done(() => {
@@ -181,15 +182,14 @@ $(window).bind('mousewheel', function(event) {
   $('section.image-grid .click-overlay').mouseout(function(){
     $(this).parent().children('div, section.images').css({'transform': `rotateY(0deg) rotateX(0deg)`});
 
-    clearInterval(h1Interval);
-    clearInterval(h2Interval);
-    clearInterval(pInterval);
+    // clearInterval(h1Interval);
+    // clearInterval(h2Interval);
+    // clearInterval(pInterval);
 
     h1IntervalBoolean = false;
     h2IntervalBoolean = false;
     pIntervalBoolean = false;
-    console.log($(this).parent()[0].className ==="image-grid about");
-    resetLetters(this);
+    // resetLetters(this);
   });
 
   function shuffle(array) { // The Fisher Yates Shuffle!
@@ -228,31 +228,31 @@ $(window).bind('mousewheel', function(event) {
     $(thisElement).parent().next().children(element)[0].textContent = textContent;
   }
 
-  $('section.image-grid .click-overlay').mouseover(function(){
-    const text = $(this).parent().next().children();
-    const thisElement = this;
-    h1IntervalBoolean = true;
-    h2IntervalBoolean = true;
-    pIntervalBoolean = true;
-    $.each(text, function(index, value){
-      if(index === 0) {
-        h1 = value.textContent;
-        const hOne = value.textContent;
-        h1Interval = setInterval(function(){ jumbleLetters(value);}, 70);
-        setTimeout(clearIntervals, 600, 'h1', hOne, thisElement);
-      } else if(index === 1) {
-        h2 = value.textContent;
-        const hTwo = value.textContent;
-        h2Interval = setInterval(function(){ jumbleLetters(value);}, 70);
-        setTimeout(clearIntervals, 1000, 'h2', hTwo, thisElement);
-      } else {
-        p = value.textContent;
-        const para = value.textContent;
-        pInterval = setInterval(function(){ jumbleLetters(value);}, 70);
-        setTimeout(clearIntervals, 1400, 'p', para, thisElement);
-      }
-    });
-  });
+  // $('section.image-grid .click-overlay').mouseover(function(){
+  //   const text = $(this).parent().next().children();
+  //   const thisElement = this;
+  //   h1IntervalBoolean = true;
+  //   h2IntervalBoolean = true;
+  //   pIntervalBoolean = true;
+  //   $.each(text, function(index, value){
+  //     if(index === 0) {
+  //       h1 = value.textContent;
+  //       const hOne = value.textContent;
+  //       h1Interval = setInterval(function(){ jumbleLetters(value);}, 70);
+  //       setTimeout(clearIntervals, 600, 'h1', hOne, thisElement);
+  //     } else if(index === 1) {
+  //       h2 = value.textContent;
+  //       const hTwo = value.textContent;
+  //       h2Interval = setInterval(function(){ jumbleLetters(value);}, 70);
+  //       setTimeout(clearIntervals, 1000, 'h2', hTwo, thisElement);
+  //     } else {
+  //       p = value.textContent;
+  //       const para = value.textContent;
+  //       pInterval = setInterval(function(){ jumbleLetters(value);}, 70);
+  //       setTimeout(clearIntervals, 1400, 'p', para, thisElement);
+  //     }
+  //   });
+  // });
 
   $('section.image-grid .click-overlay').mousemove(function(e){
     const x = e.offsetX;
