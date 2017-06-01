@@ -58,6 +58,7 @@ const $responsiveBlock = $("section.responsive-block");
 const $h1 = $("h1");
 const $h2 = $("h2");
 const $text = $("p");
+const $project = $("section.project-number");
 
 // const backgroundColors = ['#3454D1', '#DAFFED', '#292F36', '#F15946', '#C8E0F4'];
 // const h1Colors =         ['#34D1BF', '#34D1BF', '#FF6B6B', '#EEE5E9', '#6247AA'];
@@ -89,10 +90,15 @@ $(window).bind('mousewheel', function(event) {
     const opacity = (direction * 0.5) + 0.5;
     $pageBlock.eq(level).css({ "opacity":0, "transform":`perspective(2000px) rotateX(${direction * -60}deg) translateY(${direction * 600}px)`}).promise().done(() => {
 
-
       level = level + direction;
       if (level < 0) level = 0;
       else if(level > 4) level = 4;
+
+      if (level > 0) {
+        $project.css("opacity","1");
+        $project.children("span.change").children().text(level);
+      }
+      else $project.css("opacity","0");
 
       $body.css("background",`${backgroundColors[level]}`);
       $responsiveBlock.css("background",`${backgroundColors[level]}`);
@@ -101,7 +107,7 @@ $(window).bind('mousewheel', function(event) {
       $text.css("color",`${textColors[level]}`);
 
       $pageBlock.eq(level).css({"display": "block"});
-      setTimeout( (() => {
+      setTimeout((() => {
         $pageBlock.eq(level).css({ "opacity":1, "transform":"perspective(1000px) rotateX(0deg) translateY(0px)"});
         $pageBlock.eq(level-direction).css({"display": "none"});
         deltaYBoolean = true;
@@ -177,7 +183,7 @@ $(window).bind('mousewheel', function(event) {
     document.styleSheets[0].addRule('section.image-grid div div::after',`transform: skewX(${degs}deg);`);
   }
 
-   createGrid();
+  //  createGrid();
 
   $('section.image-grid .click-overlay').mouseout(function(){
     $(this).parent().children('div, section.images').css({'transform': `rotateY(0deg) rotateX(0deg)`});

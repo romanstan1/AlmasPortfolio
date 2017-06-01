@@ -432,9 +432,25 @@ footer {
 }
 
 section.project-number {
+  transition: 2s ease;
+  top: 50vh;
+  transform: translateY(-80%);
+  left: 0;
   position: fixed;
-  width: 100px;
-  display: none;
+  margin-left: 1%;
+  opacity: 0;
+  text-align: center;
+  span {
+    display: inline-block;
+  }
+  span.project {
+    display: block;
+    padding-bottom: 10px;
+  }
+  span.change {
+  }
+  span.number {
+  }
 }
 
 section.responsive-block {
