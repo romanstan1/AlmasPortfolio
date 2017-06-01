@@ -21,8 +21,8 @@ function check_element(ele) {
     document.getElementById("progress_width").value = prog_width;
     $("#bar2").animate({width:prog_width + "%"},10,function(){
       $("#percent1").html(prog_width.toFixed(0) + "%");
-      // console.log(document.getElementById("bar2").style.width);
-      if(parseFloat(document.getElementById("bar2").style.width) >= 100) {
+      console.log(document.getElementById("bar2").style.width);
+      if(parseFloat(document.getElementById("bar2").style.width) >= 99.8) {
         $("#bar2").css({"transition": "0.6s ease-out", "width": "0%"});
         $(".bar").css({"transition": "1.0s ease-out", "width": "0%"});
         $(".progress").fadeOut(1000, "swing");
@@ -66,8 +66,8 @@ const $project = $("section.project-number");
 // const textColors =       ['#FDFFFC', '#FDFFFC', '#FDFFFC', '#EEE5E9', '#062726'];
 
 
+$(window).bind('wheel', function(event) {
 
-$(window).bind('mousewheel', function(event) {
   const amount = (event.originalEvent.deltaY / 20) * 50;
   const height = Math.abs(amount);
   const viewportHeight = $( window ).height();
@@ -85,8 +85,9 @@ $(window).bind('mousewheel', function(event) {
 
   } else if(deltaYBoolean) {
     deltaYBoolean = false;
-    const direction = - event.originalEvent.wheelDelta / Math.abs(event.originalEvent.wheelDelta);
-
+    const direction = - event.originalEvent.deltaY / Math.abs(event.originalEvent.deltaY);
+    // console.log(event.originalEvent);
+    console.log(event.originalEvent.deltaY);
     const opacity = (direction * 0.5) + 0.5;
     $pageBlock.eq(level).css({ "opacity":0, "transform":`perspective(2000px) rotateX(${direction * -60}deg) translateY(${direction * 600}px)`}).promise().done(() => {
 
