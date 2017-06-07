@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="/jquery311.js" charset="utf-8"></script>
-    <meta name=viewport content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="/jquery311.js" charset="utf-8"></script> -->
+    <meta name=viewport content="width=device-width, initial-scale=1">
     <!-- <script src="https://cdnjs.cloudflare.com/ajax//4.0.1/jq.min.js"></script> -->
     <meta charset="utf-8">
-    <title>Roman Stankiewicz</title>
+    <title>Alma Schalen</title>
     <!-- inject:js -->
     <!-- endinject -->
     <!-- inject:css -->
@@ -23,208 +23,16 @@
     </div>
     <input type="hidden" id="progress_width" value="0">
 
-    <div class="scroller-heat"></div>
-
     <main>
-      <section class="page-block">
-        <section class="links">
-          <a href="https://github.com/romanstan1" target="_blank"> github</a>
-          <a href="https://www.linkedin.com/in/roman-stan/" target="_blank">linkedin</a>
-          <a href="mailto:hello@romanstan.xyz">hello@romanstan.xyz</a>
-        </section>
-
-        <section class="image-grid about">
-          <div class="grid">
-            <section class="left-bit">
-              <!-- <h1>Roman Stankiewicz</h1>
-              <h2>Developer & Designer</h2> -->
-            </section>
-
-            <section class="right-bit">
-              <p>
-                Hello! I'm <h1>Roman</h1>.
-                <br><br>
-                I'm a <h2>Front-End Web Developer</h2> and <h2>Graphic Designer</h2>, living in London.
-                <br><br>
-                I love building unique, engaging and functional websites. You know, the ones that make you stop and think, "Ooh, that's cool". Yeah, those ones.
-                <br><br>
-                I am currently available for freelance web design and development work, and I'm also on the hunt for a full-time role in an exciting company.
-                <br><br>
-                To check out some of my previous projects, just
-              </p>
-              <span>scroll down...</span>
-              <!-- <section class="links">
-                <a href="https://github.com/romanstan1" target="_blank"> <p>github</p></a>
-                <a href="https://www.linkedin.com/in/roman-stan/" target="_blank"><p>linkedin</p></a>
-                <a href="mailto:hello@romanstan.xyz"><p>hello@romanstan.xyz</p></a>
-              </section> -->
-            </section>
-          </div>
-          <a class="click-overlay"></a>
-        </section>
-
-        <!-- <section class="links">
-          <a href="https://github.com/romanstan1" target="_blank"> <p>github</p></a>
-          <a href="https://www.linkedin.com/in/roman-stan/" target="_blank"><p>linkedin</p></a>
-          <a href="mailto:hello@romanstan.xyz"><p>hello@romanstan.xyz</p></a>
-        </section> -->
-
+      <!-- <section class="background">
+        <img src="images/swedish.jpg" alt="Bet Bucket">
+      </section> -->
+      <section class="name">
+        <p>  Alma <br>Schalen</p>
       </section>
-
-      <section class="project-number">
-        <span class="project"><p>Project </p></span>
-        <span class="change"><p> 1 </p></span>
-        <span class="number"><p> / 4 </p></span>
-      </section>
-
-      <section class="page-block">
-        <section class="image-grid">
-          <div class="grid"></div>
-          <section class="images">
-            <div class="main-image">
-              <img src="images/BubbleThree.png" alt="Housing Bubble">
-            </div>
-            <div class="top-left-image">
-              <img src="images/bubble3.png" alt="Housing Bubble">
-            </div>
-            <div class="top-right-image">
-              <img src="images/BubbleOne.png" alt="Housing Bubble">
-            </div>
-            <div class="bottom-left-image">
-              <img src="images/BubbleFour.png" alt="Housing Bubble">
-            </div>
-            <div class="bottom-right-image">
-              <img src="images/BubbleTwo.png" alt="Housing Bubble">
-            </div>
-          </section>
-          <a href="https://housingbubble.herokuapp.com" target="_blank" class="responsive-overlay"></a>
-          <a href="https://housingbubble.herokuapp.com" target="_blank" class="click-overlay"></a>
-        </section>
-
-        <section class="project-info">
-          <h1>Housing Bubble</h1>
-          <h2>BUILD: AngularJS, D3.js, HTML, PostgreSQL, Ruby on Rails, SCSS.</h2>
-          <p>Housing Bubble was created with the primary aim to learn and practice the D3.js library. The application visualises property data retrieved from the Zoopla API. Houses are represented as SVG bubbles of different sizes and colours relative to the their listed value. Users can search for any location in the UK by Street name, Post code, Town, City or Area. The user can log in, add and remove houses to and from their housing portfolio and then view the house listed on Zoopla by clicking on the houses grey info box. Users can also sort houses by the number of Bedrooms or Bathrooms. There is a colour key that pops up when the footer is hovered over.</p>
-        </section>
-      </section>
-      <section class="page-block">
-        <section class="image-grid">
-          <div class="grid"></div>
-          <section class="images">
-            <div class="main-image">
-              <img src="images/SnakeFour.png" alt="Snake">
-            </div>
-            <div class="top-left-image">
-              <img src="images/SnakeTwo.png" alt="Snake">
-            </div>
-            <div class="top-right-image">
-            <img src="images/SnakeThree.png" alt="Snake">
-            </div>
-            <div class="bottom-left-image">
-              <img src="images/SnakeOne.png" alt="Snake">
-            </div>
-            <div class="bottom-right-image">
-              <img src="images/SnakeSeven.png" alt="Snake">
-            </div>
-          </section>
-          <a href="http://ga-snake.herokuapp.com/" target="_blank" class="responsive-overlay"></a>
-          <a href="http://ga-snake.herokuapp.com/" target="_blank" class="click-overlay"></a>
-        </section>
-
-        <section class="project-info">
-          <h1>Snake</h1>
-          <h2>BUILD: CSS, JavaScript, jQuery, HTML. </h2>
-          <p>This project was a modern remake of the classic Snake game. It includes an opening sequence that spells out the word 'SNAKE' with the snake itself. This version of Snake has four game options/levels which are: 1. 'Snake 2' with hollow walls, 2. 'Classic Snake' with solid walls, 3. 'Some walls' in the middle of the board and on the edge, 4. 'Bombs' that randomly appear on the game board. You can toggle through the levels using the the X and Z keys (only when the game is paused).
-          </p>
-        </section>
-      </section>
-      <section class="page-block">
-        <section class="image-grid">
-          <div class="grid"></div>
-          <section class="images">
-            <div class="main-image">
-              <img src="images/LazyrecipesSix.png" alt="Lazy Recipes">
-            </div>
-            <div class="top-left-image">
-              <img src="images/LazyrecipesOne.png" alt="Lazy Recipes">
-            </div>
-            <div class="top-right-image">
-              <img src="images/LazyrecipesFive.png" alt="Lazy Recipes">
-            </div>
-            <div class="bottom-left-image">
-              <img src="images/LazyrecipesFour.png" alt="Lazy Recipes">
-            </div>
-            <div class="bottom-right-image">
-              <img src="images/LazyrecipesTwo.png" alt="Lazy Recipes">
-            </div>
-          </section>
-          <a href="http://lazyrecipes.herokuapp.com/" target="_blank" class="responsive-overlay"></a>
-          <a href="http://lazyrecipes.herokuapp.com/" target="_blank" class="click-overlay"></a>
-        </section>
-
-        <section class="project-info">
-          <h1>Lazy Recipes</h1>
-          <h2>BUILD: AWS, Express, HTML, JavaScript, MongoDB, Node.js, SCSS.</h2>
-          <p>The appropriately titled “Lazy Recipes” is an application that finds recipes for users. The concept is simple - a user can upload images of food (or browse existing images) and then view recipes that can be cooked using the ingredients that are in that image. It uses an impressive image recognition API from Clarafai to achieve this along with a recipe finder API from Food2Fork. The design of the website is clean and rounded - this was to create a soft and inviting impression to the site, whilst allowing the content to be easily viewed and appreciated.
-          </p>
-        </section>
-      </section>
-
-      <section class="page-block">
-        <section class="image-grid">
-          <div class="grid"></div>
-          <section class="images">
-            <div class="main-image">
-              <img src="images/BetbucketTwo.png" alt="Bet Bucket">
-            </div>
-            <div class="top-left-image">
-              <img src="images/BetbucketFive.png" alt="Bet Bucket">
-            </div>
-            <div class="top-right-image">
-              <img src="images/BetbucketThree.png" alt="Bet Bucket">
-            </div>
-            <div class="bottom-left-image">
-              <img src="images/BetbucketOne.png" alt="Bet Bucket">
-            </div>
-            <div class="bottom-right-image">
-              <img src="images/BetbucketFour.png" alt="Bet Bucket">
-            </div>
-          </section>
-          <a href="http://bet-bucket.herokuapp.com" target="_blank" class="responsive-overlay"></a>
-          <a href="http://bet-bucket.herokuapp.com" target="_blank" class="click-overlay"></a>
-        </section>
-
-        <section class="project-info">
-          <h1>Bet Bucket</h1>
-          <h2>BUILD: AngularJS, ChartsJS, Express, HTML, MongoDB, Node.js, SCSS.</h2>
-          <p>Bet Bucket is an application that can track and visualise real-time sports odds using multiple repeated requests to the Betfair API. Users can build several accumulators bets, each containing multiple tracked bets. Bets are selected through a 4-stage selection process, that requires users to delve into Betfair's in-play events and select: 1. Event-Type (eg. Soccer), 2. Event Name (eg. Real Madrid Vs Barcelona), 3. Market Name (eg. Match Odds) 4. Runner Name (eg. Barcelona). Once added to the users chosen accumulator, all events are tracked and visualised by the graph at the top of the page. Users can also enter a stake to see the returned amount of £'s should they place a bet.
-          </p>
-        </section>
-      </section>
-
-      <section class="responsive-block">
-        <h2 class="message">Please view this website on a desktop for the intended experience</h2>
-        <h1>Roman Stankiewicz</h1>
-        <h2>Developer & Designer</h2>
-        <p> Hello! I'm Roman.
-          <br><br>
-            I'm a Front-End Web Developer and Graphic Designer, living in London.
-            <br><br>
-            I love building unique, engaging and functional websites. You know, the ones that make you stop and think, "Ooh, that's cool". Yeah, those ones.
-            <br><br>
-            I am currently available for freelance web design and development work, and I'm also on the hunt for a full-time role in an exciting company. To check out some of my previous projects, please view this website on a desktop.
-        </p>
-        <div>
-          <p><a href="https://github.com/romanstan1" target="_blank">github</a></p>
-          <p><a href="https://www.linkedin.com/in/roman-stan/" target="_blank">linkedin</a></p>
-          <p><a href="mailto:hello@romanstan.xyz">hello@romanstan.xyz</a></p>
-        </div>
-      </section>
-
     </main>
 
     <footer>
-      <h5>Made by Roman</h5>
     </footer>
   </body>
 </html>
