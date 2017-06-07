@@ -6,7 +6,7 @@
     "alexpchin <alex@alexchin.co.uk>"
   ],
   "license": "ISC",
-  "homepage": "",
+  "homepage": "https://github.com/romanstan1/AlmasPortfolio",
   "ignore": [
     "**/.*",
     "node_modules",

@@ -46,7 +46,7 @@ div.progress {
     div.bar-block {
       // background: #68C3AF;
       // background: linear-gradient(to right, #68C3AF, rgba(104, 195, 175, 0.6));
-      background: url('/swedish.jpg');
+      background: url('/images/swedish.jpg');
       width:0%;
       height:40px;
       position: absolute;
@@ -116,7 +116,7 @@ main {
       font-size: 125px;
       font-weight: 800;
       top: 50%;
-      background: url('/swedish.jpg');
+      background: url('/images/swedish.jpg');
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
       color: red;
